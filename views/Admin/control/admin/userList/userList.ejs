@@ -1,0 +1,65 @@
+<%- include('../../../../partiels/haederAdminCpanel.ejs');-%>
+
+<div class="container-fluid">
+
+    
+
+  <section class="container">
+    <hr>
+    <h2>Lista de usuários</h2>
+    
+    <hr> 
+
+    <table class="table table-bordered">
+
+        <thead>
+            <th>ID</th>
+            <th>NOME</th>
+            <th>NIVEL</th>
+            <th>ACÇÕES</th>
+        </thead>
+        <tbody >
+        <div class="rolagem-Content-Default">
+                
+          <%user.forEach(user=>{%>
+                <tr>
+                  <td><%=user.id%></td>
+                  <td><%=user.name%></td>
+                  <td><%=user.perfil%></td>
+                  
+                    <th>
+                            <a href="/admin/change/<%=user.id%>" class="btn btn-danger">trocar acesso</a>
+                            <form action="/admin/backList/<%=user.id%>" method="get" style="display: inline;" onsubmit="confirmacaoform(event,this)">
+                                <button type="submit" class="btn btn-dark">lista negra</button>
+                            </form>
+                         
+                           
+                    </th>
+                </tr>
+                <%  })%>
+           
+        </div>
+        </tbody>
+    </table>
+</section>
+
+  </div>
+
+</div>
+
+
+<script>
+  function confirmacaoform(event, form) {
+      event.preventDefault();
+      var decision = confirm("Você quer adicionar este usuário na lista negra? ");
+  
+      if (decision) {
+          form.submit();
+      }
+  }
+  </script>
+<!-- End of Main Content -->
+
+
+
+  <%- include('../../../../partiels/footerAdminCpanel.ejs');-%>

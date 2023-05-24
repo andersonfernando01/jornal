@@ -1,0 +1,41 @@
+<%- include('partiels/headerHomePage.ejs'); -%>
+
+<!-- Begin Page Content -->
+<section class="container "  style="text-align: center;">
+
+
+  <h2>Últimas Notícias</h2>
+  <article class="container d-flex p-4">
+    <% artigos.forEach(artigos =>{%>
+      <div class="card m-2" style="width: 18rem;">
+        <img src="/uploads/capa/<%=artigos.capa%>" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h6><%=artigos.title%></h6>
+          <a href="/<%=artigos.slug%>" class="btn btn-primary"> Ler mais</a>
+        </div>
+      </div>
+   <% })%>
+    
+    
+  </article>
+
+  
+  </section>
+
+  <section class="container ">
+    <h2>Desporto</h2>
+    <div class="container d-flex">
+      <article class="m-2">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/s_XMx_avvx4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </article>
+      <article class="m-2"> 
+        <iframe width="460" height="315" src="https://www.youtube.com/embed/CMiuW4iFED0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </article>
+    </div>
+    
+   
+  </section>
+
+
+
+<%- include('partiels/footerHomePage.ejs'); -%>

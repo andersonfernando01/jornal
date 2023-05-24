@@ -1,0 +1,43 @@
+
+<%- include('../partiels/headerChat.ejs'); -%>
+
+
+<section class="container">
+
+    <form id="chat">
+        <input type="text" name="nomeUser" >
+        <div class="card">
+
+        </div>
+       <input type="text" name="messagem">
+        <button type="submit">Enviar</button>
+    </form>
+
+</section>
+
+
+
+<script type="text/javacript">
+    var socket = io("http://localhost:3040"); 
+
+    $('#chat').submit(function(event) {
+       
+        event.preventDefault();
+
+        var autor = $('input[name="nomeUser"]').val();
+        var message =$('input[name=messagem"]').val();
+
+        if(autor.length && message.length > 0){
+            var messsageObj={
+                autor:autor,
+                message:message
+            };
+
+            socket.emit('sendMesssage',messsageObj);
+            
+        }
+    })
+
+</script>
+
+<%- include('../partiels/footerChat.ejs'); -%>

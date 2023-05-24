@@ -1,0 +1,56 @@
+<%- include('../../../partiels/headerCpanel.ejs');-%>
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h3 class="h3 mb-4 text-gray-800">Escreva um novo Artigo</h3>
+
+
+    <form action="/articles/save" class="card p-4" enctype="multipart/form-data"  method="post">
+
+
+      <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+          <label for="">Escolhe a categoria</label>
+        <select name="category" id="" class="form-control">
+          <% categoria.forEach(category=>{ %>
+            <option value="<%=category.id%>"><%=category.title%></option>
+        <%  })%>
+         
+        </select>
+        </div>
+        <div class="col-sm-6">
+          <label for="">Titulo </label>
+        <input type="text" class="form-control" name="title">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Image de capa </label>
+        <input type="file" class="form-control" name="capa">
+      </div>
+
+      <div class="form-group">
+        <label for="">Escreva aqui o teu artigo</label>
+        <textarea class="form-control" name="body" id="mytextarea" cols="30" rows="10" >
+          
+        </textarea>
+      </div>
+      <button class="btn btn-primary btn-user btn-block">Publicar</button>
+
+    </form>
+    
+
+  </div>
+
+</div>
+<!-- End of Main Content -->
+<!--Tiny Doc-->
+<script src="/tinymce/tinymce.min.js" ></script>
+<script type="text/javascript">
+  tinymce.init({
+    selector: '#mytextarea',
+    plugins:['advlist','video','image','paste','code','table','imagetools','link',]
+  });
+  </script>
+
+  <%- include('../../../partiels/footerCpanel.ejs');-%>

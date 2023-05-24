@@ -1,0 +1,98 @@
+<%- include('../../../../partiels/haederAdminCpanel.ejs');-%> 
+
+<section class="container my-4">
+    <article class="card my-4">
+        <div class="card-header">
+            <hr>
+            <h2>Escrever Publicação</h2>
+            <a href="/admin/articles/cpanel" class="btn btn-primary">Voltar</a>
+        </hr>
+        </div>
+
+        <div class="card-body">
+            <form action="/articles/save" class="card p-4" enctype="multipart/form-data"  method="post">
+
+
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="">Escolhe a categoria</label>
+                  <select name="category" id="" class="form-control">
+                    <% categories.forEach(category=>{ %>
+                      <option value="<%=category.id%>"><%=category.title%></option>
+                  <%  })%>
+                   
+                  </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="">Titulo </label>
+                  <input type="text" class="form-control" name="title">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="">Image de capa </label>
+                  <input type="file" class="form-control" name="capa">
+                </div>
+          
+                <div class="form-group">
+                  <label for="">Escreva aqui o teu artigo</label>
+                  <textarea class="form-control" name="body" id="mytextarea" cols="30" rows="10" >
+                    
+                  </textarea>
+                </div>
+                <button class="btn btn-primary btn-user btn-block">Publicar</button>
+          
+              </form>
+        
+        </div>
+    </article>
+    </section>
+</body> 
+<script src="/js/bootstrap.min.js"></script>
+    
+ <!--  Modal Localização --> 
+ <div class="modal fade  " id="RegionHUILA" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl bg bg-light" >
+    <section class="container map">
+      <div class="bg bg-light">
+        <h2>Nossa localização: HUÍLA</h2>
+      </div>
+      <div class="card ">
+          <div class="card-body2">
+              <div class="letf">
+                  <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61683.59684244596!2d13.426510431250007!3d-14.9245638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ba34b9c71d770c7%3A0xcd36951e5d9ba69b!2sMilenium!5e0!3m2!1spt-PT!2sao!4v1676742781078!5m2!1spt-PT!2sao" width="500" height="450" style="border:0;"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+              <div class="right">
+                  <img src="/image/other/imageDefault.jpg" alt="" srcset="">
+              </div>
+
+              
+          </div>
+      </div>
+
+
+      <div class="container ">
+          <h5>Contacto: <span>+244 9xx xxx xxx</span></h5>
+          <h5>Trabalhamo: 8h as 15h</h5>
+      </div>
+      
+   
+  </section>
+  </div>
+
+</div>
+
+</html>
+
+<script src="/tinymce/tinymce.min.js"></script>
+
+<script>
+ tinymce.init({
+        selector: "#article",
+        activeEditor: true,
+        plugins:[
+            "advlinst autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons"
+        ]
+    })
+
+</script>
+

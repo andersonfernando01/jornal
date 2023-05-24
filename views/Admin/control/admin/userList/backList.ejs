@@ -1,0 +1,49 @@
+<%- include('../../../../partiels/header.ejs'); -%>
+
+<section class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          
+
+          <img src="/image/git/form-registration.gif" alt="" class="col-lg-5 d-none d-lg-block" >
+
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4"> Adicionar a lista negra</h1>
+              </div>
+              <form class="user" action="/admin/change/blacklist" method="post">
+               
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="perfil">Usuário</label>
+                  <select name="name" id="perfil" class="form-control ">
+                    <option value="<%=user.name%>" selected><%=user.name%></option>
+                  </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="perfil">Barrar acesso</label>
+                  <select name="perfil" id="perfil" class="form-control ">
+
+                    <option value="Barrar">Barrar</option>
+                   
+                
+                  
+                  </select>
+                  </div>
+                </div>
+                <button class="btn btn-primary btn-user btn-block">Trocar</button>
+                
+              </form>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+<% - include('../../../../partiels/footer.ejs');-%>
