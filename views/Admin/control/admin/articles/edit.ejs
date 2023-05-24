@@ -1,0 +1,82 @@
+<%- include('../../partiels/headerCpanel.ejs');-%> 
+
+<section class="container my-4">
+
+    <div id="conteudo" style="display:none">
+        <%- artigo.body %>
+     </div>
+
+    <article class="card my-4">
+        <div class="card-header">
+            <hr>
+            <h2>Editar Publicação</h2>
+            <a href="/admin/articles" class="btn btn-success">Voltar</a>
+        </hr>
+        </div>
+            <form action="/articles/update" class="card p-4" enctype="multipart/form-data"  method="post">
+
+
+      <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+          <label for="">Escolhe a categoria</label>
+          <select name="category" class="form-control">
+            <% categories.forEach(categorias =>{ %>
+
+                <% if(categorias.id == artigo.categoriaId){ %>
+                    <option value="<%=categorias.id%>" selected><%= categorias.title %></option>
+               <% }else{ %>
+                <option value="<%=categorias.id%>"><%= categorias.title %></option>
+              <%  }%>
+
+                
+           <% }) %>
+        </select>
+
+        </div>
+        <div class="col-sm-6">
+          <label for="">Titulo </label>
+          <input type="hidden" name="id" value="<%=artigo.id%>">
+          <input type="text" name="title" placeholder="informe titulo da publicação" class="form-control" value="<%=artigo.title%>">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="capa">Image de capa </label>
+        <input type="file" name="capa" id="capa" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="">Escreva aqui o teu artigo</label>
+        <textarea name="body" placeholder="Escreva aqui" class="form-control" id="article"></textarea>
+          
+        </textarea>
+      </div>
+      <button class="btn btn-primary btn-user btn-block">Publicar</button>
+
+            </form>
+        
+        </div>
+    </article>
+</section>
+</body> 
+<script src="/js/bootstrap.min.js"></script>
+    
+</html> 
+
+<script src="/tinymce/tinymce.min.js"></script>
+
+<script>
+ tinymce.init({
+        selector: "#article",
+        activeEditor: true,
+        plugins:[
+            "advlinst autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons"
+        ],
+        init_instance_callback:()=>{
+            tinymce.get("article").setContent($("#conteudo").html())
+        }
+    })
+
+</script>
+<%- include('../../partiels/footerCpanel.ejs');-%> 
+
+

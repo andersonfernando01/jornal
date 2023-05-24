@@ -1,0 +1,90 @@
+<%- include('../../partiels/haederAdminCpanel.ejs');-%> 
+
+
+<section class="container">
+    <hr>
+    <h2>Categorias</h2>
+    <a href="/admin/categories/new" class="btn btn-success">Criar nova categoria</a>
+    <hr> 
+
+    <table class="table table-bordered">
+
+        <thead>
+            <th>ID</th>
+            <th>TITULO</th>
+            <th>SLUG</th>
+            <th>ACÇÕES</th>
+        </thead>
+        <tbody >
+        <div class="rolagem-Content-Default">
+                <% categories.forEach(categorias=>{ %>
+                <tr>
+                    <th><%=categorias.id%></th>
+                    <th><%=categorias.title%></th>
+                    <th><%=categorias.slug%></th>
+                    <th>
+                            <a href="/admin/categories/edit/<%=categorias.id%>" class="btn btn-warning">Editar</a>
+                            <form action="/categories/delete" method="post" style="display: inline;" onsubmit="confirmacaoform(event,this)">
+                                <input type="text" name="id" hidden value="<%= categorias.id%>">
+                                <button type="submit" class="btn btn-danger">Apagar</button>
+                            </form>
+                           
+                    </th>
+                </tr>
+           <% })%>
+        </div>
+        </tbody>
+    </table>
+</section>
+
+</body> 
+<script src="/js/bootstrap.min.js"></script>
+    
+ <!--  Modal Localização --> 
+ <div class="modal fade  " id="RegionHUILA" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl bg bg-light" >
+    <section class="container map">
+      <div class="bg bg-light">
+        <h2>Nossa localização: HUÍLA</h2>
+      </div>
+      <div class="card ">
+          <div class="card-body2">
+              <div class="letf">
+                  <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61683.59684244596!2d13.426510431250007!3d-14.9245638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ba34b9c71d770c7%3A0xcd36951e5d9ba69b!2sMilenium!5e0!3m2!1spt-PT!2sao!4v1676742781078!5m2!1spt-PT!2sao" width="500" height="450" style="border:0;"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+              <div class="right">
+                  <img src="/image/other/imageDefault.jpg" alt="" srcset="">
+              </div>
+
+              
+          </div>
+      </div>
+
+
+      <div class="container ">
+          <h5>Contacto: <span>+244 9xx xxx xxx</span></h5>
+          <h5>Trabalhamo: 8h as 15h</h5>
+      </div>
+      
+   
+  </section>
+  </div>
+
+</div>
+
+</html>
+
+<script>
+function confirmacaoform(event, form) {
+    event.preventDefault();
+    var decision = confirm("Você quer deletar esta categoria? ");
+
+    if (decision) {
+        form.submit();
+    }
+}
+</script>
+
+
+
+<%- include('../../partiels/footerAdminCpanel.ejs');-%> 

@@ -1,0 +1,39 @@
+<%- include('../../partiels/haederAdminCpanel.ejs') -%> 
+
+<section class="container my-4">
+    <article class="card my-4">
+        <div class="card-header">
+            <hr>
+            <h2>Editar de Categoria</h2>
+            <a href="/admin/categories" class="btn btn-success">Voltar</a>
+        </hr>
+        </div>
+
+        <div class="card-body">
+            <form action="/categories/update" method="post">
+
+                
+                    <input type="text" name="title" value="<%=categoria.title%>" placeholder="informe o tituo da categoria" class="form-control">
+
+                    <input type="hidden" name="id" value="<%=categoria.id%>">
+
+               
+                <button class="btn btn-success my-2">Actualizar</button>
+            </form>
+        
+        </div>
+    </article>
+    </section>
+
+</body> 
+<script src="/js/bootstrap.min.js"></script>
+    
+</html>
+
+<%- include('../../partiels/footerAdminCpanel.ejs');-%>
+
+
+
+
+
+
